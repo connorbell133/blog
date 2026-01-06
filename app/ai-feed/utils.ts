@@ -5,13 +5,12 @@ const parser = new Parser()
 // RSS feed sources organized by category
 export const rssFeeds = [
   // Official AI Labs
-  { url: 'https://www.anthropic.com/index.xml', source: 'Anthropic Blog' },
+  { url: 'https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml', source: 'Anthropic Blog' },
   { url: 'https://openai.com/news/rss.xml', source: 'OpenAI News' },
   { url: 'https://deepmind.google/blog/rss.xml', source: 'Google DeepMind' },
   // Coding & Frameworks
   { url: 'https://huggingface.co/blog/feed.xml', source: 'Hugging Face Blog' },
   { url: 'https://blog.langchain.dev/rss/', source: 'LangChain Blog' },
-  { url: 'https://vercel.com/blog/feed', source: 'Vercel Blog' },
   // Startups & Trends
   { url: 'https://techcrunch.com/category/artificial-intelligence/feed/', source: 'TechCrunch AI' },
   { url: 'https://venturebeat.com/category/ai/feed/', source: 'VentureBeat AI' },

@@ -16,7 +16,7 @@ const categories = [
   },
   {
     name: 'Coding & Frameworks',
-    sources: ['Hugging Face Blog', 'LangChain Blog', 'Vercel Blog'],
+    sources: ['Hugging Face Blog', 'LangChain Blog'],
   },
   {
     name: 'Startups & Trends',
