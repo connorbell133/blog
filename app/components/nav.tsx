@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 const navItems = {
   '/': {
@@ -35,6 +36,23 @@ export function Navbar() {
                 </Link>
               )
             })}
+          </div>
+          <div className="flex flex-row items-center space-x-2 ml-auto">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </nav>
       </div>
