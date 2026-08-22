@@ -27,10 +27,10 @@ Keep it simple - the tools handle the presentation.`,
   stopWhen: stepCountIs(10),
   tools: {
       getBlogPostTitles: tool({
-        description: 'Get a list of all blog post titles and publication dates from the personal blog',
+        description: 'Get a list of all blog post titles and publication dates from the personal blog (Medium articles)',
         inputSchema: z.object({}),
         execute: async () => {
-          const posts = getBlogPosts();
+          const posts = await getBlogPosts();
           return posts
             .sort((a, b) => {
               if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
@@ -43,6 +43,7 @@ Keep it simple - the tools handle the presentation.`,
               publishedAt: formatDate(post.metadata.publishedAt),
               slug: post.slug,
               summary: post.metadata.summary,
+              link: post.link,
             }));
         },
       }),
@@ -52,7 +53,7 @@ Keep it simple - the tools handle the presentation.`,
           slug: z.string().describe('The slug of the blog post to retrieve'),
         }),
         execute: async ({ slug }) => {
-          const posts = getBlogPosts();
+          const posts = await getBlogPosts();
           const post = posts.find((p) => p.slug === slug);
 
           if (!post) {
@@ -65,6 +66,7 @@ Keep it simple - the tools handle the presentation.`,
             summary: post.metadata.summary,
             content: post.content,
             slug: post.slug,
+            link: post.link,
           };
         },
       }),
@@ -119,7 +121,7 @@ Keep it simple - the tools handle the presentation.`,
           query: z.string().describe('The search term to look for'),
         }),
         execute: async ({ query }) => {
-          const posts = getBlogPosts();
+          const posts = await getBlogPosts();
           const searchTerm = query.toLowerCase();
 
           return posts
@@ -139,6 +141,7 @@ Keep it simple - the tools handle the presentation.`,
               publishedAt: formatDate(post.metadata.publishedAt),
               slug: post.slug,
               summary: post.metadata.summary,
+              link: post.link,
             }));
         },
       }),
